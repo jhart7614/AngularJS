@@ -1,0 +1,217 @@
+<html>
+<html lang="en">
+
+    <Form Name="F1">
+        <input type="text" Name="T1">
+        <input type="button" value="click" Name="B" onclick= "Boom()"><br>
+        Number 1: <input type="text" name="T2"><br>
+        Number 2: <input type="text" name="T3"><br>
+        <input type="button" value="+" Name="C" onclick= "Add()">
+        Result: <input type="text" name="T4">
+        <input type="button" value="Check boxes" Name="C" onclick= "Empty()">
+        </Form>
+
+    <Form Name="F2">
+        <input type="button" Name="T1">
+        <input type="text" Name="T1">
+        <input type="text" Name="T1">
+        <input type="text" value="yes" Name="T1">
+
+    </Form>
+
+    <Form Name="F3">
+        <input type="button" Name="T1">
+        <input type="text" Name="T1">
+        <input type="text" Name="T1">
+        <input type="text" value="yes" Name="T1">
+
+    </Form>
+
+    <Form action="Test.html" >
+        Name <input value = "" type = "text" name="N" id = "N">
+        Password <input type = "password" name="P" id="P">
+        <input type ="submit" onclick="check()">
+    </Form>
+
+    <body>
+
+    <span id = "QA" style = "Position:absolute; top:100; left:500; font-size: 14; color:black">
+    QA Consulting </span>
+    <span id = "red" style = "Position:absolute; top:25; left:25;  color:red">
+    RED </span>
+    <span id = "green" style = "Position:absolute; top:925; left:25;  color:green">
+    GREEN </span>
+    <span id = "red" style = "Position:absolute; top:25; left:1825;  color:blue">
+    BLUE </span>
+    <span id = "red" style = "Position:absolute; top:925; left:1825;  color:yellow">
+    YELLOW </span>
+
+    <div id = "Countries">
+        <span onmouseenter = "hoveringCountries('Countries');" >Countries</span>
+
+        <div id = "list"  style="display: none" >
+            <a onmouseenter = "in1('uk')" onmouseleave = "out1('uk') href = 'https://en.wikipedia.org/wiki/United_Kingdom'>UK</a><br>
+            <a id = "usa">USA</a><br>
+            <a id = "india">INDIA</a><br>
+            <a id = "south africa">SOUTH AFRICA</a>
+        </div>
+    </div>
+<br>
+    <div id = "Sports">
+        <span onmouseenter = "hoveringSports('Sports');" >Sports</span>
+
+        <div style="display: none">
+            <a href = 'https://en.wikipedia.org/wiki/Cricket'>Cricket</a><br>
+            <a>Football</a><br>
+            <a>Table Tennis</a><br>
+        </div>
+    </div>
+
+</body>
+
+    <script>
+
+        var string = document.getElementById("N").value
+        string = string.replace(/[^a-zA-Z0-9]/g,'');
+
+        function check() {
+            if (document.getElementById("N").value =="") {
+                alert("Name missing") }
+            if (document.getElementById("P").value =="") {
+                alert("Password missing")
+            }
+            }
+
+        var T1 = window.document.forms[0].elements[0];
+        var T2 = window.document.forms[0].elements[2];
+        var T3 = window.document.forms[0].elements[3];
+        var T4 = window.document.forms[0].elements[5];
+
+    function in1(id) {
+        let panel = document.getElementById(id);
+        panel.style.backgroundColor = 'blue';
+    }
+
+        function out1(id) {
+            let panel = document.getElementById(id);
+            panel.style.backgroundColor = 'white';
+
+        }
+        function hoveringCountries(id) {
+            let panel = document.getElementById(id);
+            panel.children[1].style.display = "block";
+            let panel1 = document.getElementById('Sports');
+            panel1.children[1].style.display = "none";
+
+        }
+
+    function highlight(id) {
+        let panel = document.getElementById(id);
+        panel.children[2].style.backgroundColor = "blue"
+    }
+
+        function hoveringSports(id) {
+            let panel = document.getElementById(id);
+            panel.children[1].style.display = "block";
+            let panel1 = document.getElementById('Countries');
+            panel1.children[1].style.display = "none";
+
+        }
+
+        function Boom() {
+
+            T1.value = "hello my Friends";
+        }
+
+        function Add() {
+
+            if(T2.value =="") {
+                window.alert("First Number is Missing!")
+                T2.focus();
+            }
+
+            else if(T3.value =="") {
+                window.alert("Second Number is Missing!")
+                T3.focus();
+            }
+
+            else {
+
+                var no1 = parseInt(T2.value);
+                var no2 = parseInt(T3.value);
+                var Result = no1 + no2;
+                T4.value = Result;
+            }
+
+        }
+
+        function Empty() {
+
+            for (var j = 0; j < window.document.forms.length; j++) {
+                for (var i = 0; i < window.document.forms[j].elements.length; i++) {
+
+                    if (window.document.forms[j].elements[i].value == "" && window.document.forms[j].elements[i].type == "text") {
+
+                        window.document.forms[j].elements[i].focus();
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        function cursor1() {
+
+            document.getElementById("QA").style.top = window.event.clientY;
+            document.getElementById("QA").style.left = window.event.clientX;
+        }
+
+        function cursor2() {
+            var a = 500;
+            document.getElementById("QA").style.fontSize = a - window.event.clientY;
+            document.getElementById("QA").style.left = window.event.clientX;
+        }
+
+        function cursor3() {
+
+            document.getElementById("QA").style.top = window.event.clientY;
+            document.getElementById("QA").style.left = window.event.clientX;
+
+            if (window.event.clientY > 0 && window.event.clientY < 50 && window.event.clientX > 0 && window.event.clientX < 50) {
+                document.getElementById("QA").style.color = 'red';
+
+            }
+
+            if (window.event.clientY > 900 && window.event.clientY < 950 && window.event.clientX > 0 && window.event.clientX < 50) {
+                document.getElementById("QA").style.color = 'green';
+
+            }
+
+            if (window.event.clientY > 0 && window.event.clientY < 50 && window.event.clientX > 1800 && window.event.clientX < 1850) {
+                document.getElementById("QA").style.color = 'blue';
+
+            }
+
+            if (window.event.clientY > 900 && window.event.clientY < 950 && window.event.clientX > 1800 && window.event.clientX < 1850) {
+                document.getElementById("QA").style.color = 'yellow';
+
+            }
+        }
+
+        document.addEventListener("keyup", function(event) {
+        if (event.key == 'ArrowUp') {
+            let size = parseInt(document.getElementById("QA").style.fontSize);
+
+            document.getElementById("QA").style.fontSize =  2 + size;}
+        });
+
+        document.addEventListener("keyup", function(event) {
+            if (event.key == 'ArrowDown') {
+                let size = parseInt(document.getElementById("QA").style.fontSize);
+
+                document.getElementById("QA").style.fontSize =  size - 2;}
+        });
+
+    </script>
+</html>
